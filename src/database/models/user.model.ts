@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import { UserRolesEnum } from '../../domain/enums/user';
 import BycryptHelper from '../../utilities/bcrypt-helper';
 
@@ -10,6 +10,7 @@ export interface UserDocument extends mongoose.Document {
   avatar: string;
   password: string;
   role: UserRolesEnum[];
+  address: string;
 }
 
 const UserSchema: mongoose.Schema = new mongoose.Schema(
@@ -27,7 +28,8 @@ const UserSchema: mongoose.Schema = new mongoose.Schema(
         }
       ],
       default: UserRolesEnum.BUYER
-    }
+    },
+    address: { type: Schema.Types.ObjectId, ref: 'Address' }
   },
   { timestamps: true }
 );

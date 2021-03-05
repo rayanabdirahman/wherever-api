@@ -1,7 +1,7 @@
 import { UserRolesEnum } from '../enums/user';
 
 export interface UserModel {
-  _id: string | Record<string, unknown>;
+  _id: string;
   name: string;
   username: string;
   email: string;

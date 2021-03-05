@@ -1,5 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
+// TODO: Add address to store
 export interface StoreDocument extends mongoose.Document {
   _id: mongoose.Types.ObjectId;
   name: string;

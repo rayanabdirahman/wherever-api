@@ -1,5 +1,6 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-require('dotenv').config();
+// config environment variables
+import dotenv from 'dotenv';
+dotenv.config();
 import config from './config';
 import bootstrapApp from './app';
 import logger from './utilities/logger';
