@@ -1,7 +1,10 @@
 const TYPES = {
   Controller: Symbol('Controller'),
   AccountService: Symbol('AccountService'),
-  AccountRepository: Symbol('AccountRepository'),
+  AddressService: Symbol('AddressService'),
+  AddressRepository: Symbol('AddressRepository'),
+  UserService: Symbol('UserService'),
+  UserRepository: Symbol('UserRepository'),
   OrganisationService: Symbol('OrganisationService'),
   OrganisationRepository: Symbol('OrganisationRepository'),
   StoreService: Symbol('StoreService'),

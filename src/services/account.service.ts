@@ -1,6 +1,5 @@
 import { injectable, inject } from 'inversify';
-// import { UserDocument } from '../database/models/user.model';
-import { AccountRepository } from '../database/repositories/account.repository';
+import { UserRepository } from '../database/repositories/user.repository';
 import { SignInModel, SignUpModel } from '../domain/interfaces/account';
 import TYPES from '../types';
 import BycryptHelper from '../utilities/bcrypt-helper';
@@ -14,17 +13,15 @@ export interface AccountService {
 
 @injectable()
 export class AccountServiceImpl implements AccountService {
-  private accountRepository: AccountRepository;
+  private userRepository: UserRepository;
 
-  constructor(
-    @inject(TYPES.AccountRepository) accountRepository: AccountRepository
-  ) {
-    this.accountRepository = accountRepository;
+  constructor(@inject(TYPES.UserRepository) userRepository: UserRepository) {
+    this.userRepository = userRepository;
   }
 
   async signUp(model: SignUpModel): Promise<string> {
     try {
-      const user = await this.accountRepository.createOne(model);
+      const user = await this.userRepository.createOne(model);
 
       // sign JWT token
       return await JwtHelper.sign(user);
@@ -42,10 +39,7 @@ export class AccountServiceImpl implements AccountService {
   async signIn(model: SignInModel): Promise<string> {
     try {
       // find user by email address
-      const user = await this.accountRepository.findOneByEmail(
-        model.email,
-        false
-      );
+      const user = await this.userRepository.findOneByEmail(model.email, false);
       if (!user) {
         throw new Error('Invalid credentials');
       }
