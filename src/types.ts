@@ -12,7 +12,11 @@ const TYPES = {
   CategoryService: Symbol('CategoryService'),
   CategoryRepository: Symbol('CategoryRepository'),
   ProductService: Symbol('ProductService'),
-  ProductRepository: Symbol('ProductRepository')
+  ProductRepository: Symbol('ProductRepository'),
+  OrderService: Symbol('OrderService'),
+  OrderRepository: Symbol('OrderRepository'),
+  OrderItemService: Symbol('OrderItemService'),
+  OrderItemRepository: Symbol('OrderItemRepository')
 };
 
 export default TYPES;

@@ -47,6 +47,19 @@ import {
   AddressRepository,
   AddressRepositoryImpl
 } from './database/repositories/address.repository';
+import {
+  OrderRepository,
+  OrderRepositoryImpl
+} from './database/repositories/order.repository';
+import { OrderService, OrderServiceImpl } from './services/order.service';
+import {
+  OrderItemRepository,
+  OrderItemRepositoryImpl
+} from './database/repositories/orderItem.repository';
+import {
+  OrderItemService,
+  OrderItemServiceImpl
+} from './services/orderItem.service';
 
 const container = new Container();
 
@@ -73,6 +86,10 @@ container.bind<StoreService>(TYPES.StoreService).to(StoreServiceImpl);
 container.bind<AccountService>(TYPES.AccountService).to(AccountServiceImpl);
 container.bind<UserService>(TYPES.UserService).to(UserServiceImpl);
 container.bind<AddressService>(TYPES.AddressService).to(AddressServiceImpl);
+container.bind<OrderService>(TYPES.OrderService).to(OrderServiceImpl);
+container
+  .bind<OrderItemService>(TYPES.OrderItemService)
+  .to(OrderItemServiceImpl);
 
 // repository
 container
@@ -89,5 +106,9 @@ container.bind<UserRepository>(TYPES.UserRepository).to(UserRepositoryImpl);
 container
   .bind<AddressRepository>(TYPES.AddressRepository)
   .to(AddressRepositoryImpl);
+container.bind<OrderRepository>(TYPES.OrderRepository).to(OrderRepositoryImpl);
+container
+  .bind<OrderItemRepository>(TYPES.OrderItemRepository)
+  .to(OrderItemRepositoryImpl);
 
 export default container;
