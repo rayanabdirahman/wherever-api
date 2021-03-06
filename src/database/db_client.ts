@@ -2,7 +2,7 @@ import config from '../config';
 import mongoose from 'mongoose';
 import logger from '../utilities/logger';
 
-const MONGO_URI = `mongodb+srv://${config.API_DB_USERNAME}:${config.API_DB_PASSWORD}@cluster0.fxdui.mongodb.net/${config.API_DB_NAME}?retryWrites=true&w=majority`;
+const MONGO_URI = `mongodb+srv://${config.APP_DB_USERNAME}:${config.APP_DB_PASSWORD}@cluster0.fxdui.mongodb.net/${config.APP_DB_NAME}?retryWrites=true&w=majority`;
 
 const connectToDbClient = async (uri: string = MONGO_URI): Promise<void> => {
   try {

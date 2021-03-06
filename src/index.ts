@@ -9,7 +9,7 @@ import connectToDbClient from './database/db_client';
 const runApp = async () => {
   try {
     logger.debug(`[START]: Bootstrapping app`);
-    const PORT = process.env.PORT || config.API_PORT;
+    const PORT = process.env.PORT || config.APP_PORT;
 
     const app = await bootstrapApp();
 

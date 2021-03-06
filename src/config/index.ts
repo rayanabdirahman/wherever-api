@@ -1,10 +1,10 @@
 const config = {
-  API_PORT: process.env.API_PORT,
-  API_DB_NAME: process.env.API_DB_NAME,
-  API_DB_USERNAME: process.env.API_DB_USERNAME,
-  API_DB_PASSWORD: process.env.API_DB_PASSWORD,
+  APP_PORT: process.env.APP_PORT,
+  APP_DB_NAME: process.env.APP_DB_NAME,
+  APP_DB_USERNAME: process.env.APP_DB_USERNAME,
+  APP_DB_PASSWORD: process.env.APP_DB_PASSWORD,
   API_URL: process.env.API_URL,
-  API_JWT_SECRET: process.env.API_JWT_SECRET
+  APP_JWT_SECRET: process.env.APP_JWT_SECRET
 };
 
 export default config;

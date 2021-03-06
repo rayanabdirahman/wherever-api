@@ -22,7 +22,7 @@ const JwtHelper: IJwtHelper = {
       }
     };
 
-    return await jwt.sign(payload, `${config.API_JWT_SECRET}`, {
+    return await jwt.sign(payload, `${config.APP_JWT_SECRET}`, {
       // expires in one week
       expiresIn: `1w`
     });
@@ -32,7 +32,7 @@ const JwtHelper: IJwtHelper = {
     try {
       return (await jwt.verify(
         token,
-        `${config.API_JWT_SECRET}`
+        `${config.APP_JWT_SECRET}`
       )) as JwtPayload;
     } catch (error) {
       const { message } = error;

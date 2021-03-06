@@ -21,7 +21,7 @@ const rejectRequestToAdminRoutes = (
 
 const AuthGuard = (): any =>
   expressJWT({
-    secret: `${config.API_JWT_SECRET}`,
+    secret: `${config.APP_JWT_SECRET}`,
     algorithms: ['HS256'],
     isRevoked: rejectRequestToAdminRoutes
   }).unless({
