@@ -12,7 +12,7 @@ export default class AddressValidator {
     postCode: Joi.string().required(),
     phoneNumber: Joi.string().required(),
     deliveryInstructions: Joi.string().required(),
-    securityCode: Joi.string().required(),
+    securityCode: Joi.string().required()
   });
 
   static createOne(model: CreateAddressModel): Joi.ValidationResult {

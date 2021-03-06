@@ -76,7 +76,7 @@ export default class AddressController implements RegistrableController {
     } catch (error) {
       const { message } = error;
       logger.error(
-        `[AddressController: findAll] - Unable to find users: ${message}`
+        `[AddressController: findAll] - Unable to find addresses: ${message}`
       );
       return ApiResponse.error(res, error);
     }
