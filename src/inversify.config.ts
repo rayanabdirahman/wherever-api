@@ -60,6 +60,10 @@ import {
   OrderItemService,
   OrderItemServiceImpl
 } from './services/orderItem.service';
+import {
+  CloudinaryService,
+  CloudinaryServiceImpl
+} from './services/cloudinary.service';
 
 const container = new Container();
 
@@ -90,6 +94,9 @@ container.bind<OrderService>(TYPES.OrderService).to(OrderServiceImpl);
 container
   .bind<OrderItemService>(TYPES.OrderItemService)
   .to(OrderItemServiceImpl);
+container
+  .bind<CloudinaryService>(TYPES.CloudinaryService)
+  .to(CloudinaryServiceImpl);
 
 // repository
 container

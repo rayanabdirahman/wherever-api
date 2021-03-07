@@ -16,7 +16,8 @@ const TYPES = {
   OrderService: Symbol('OrderService'),
   OrderRepository: Symbol('OrderRepository'),
   OrderItemService: Symbol('OrderItemService'),
-  OrderItemRepository: Symbol('OrderItemRepository')
+  OrderItemRepository: Symbol('OrderItemRepository'),
+  CloudinaryService: Symbol(' CloudinaryService')
 };
 
 export default TYPES;
