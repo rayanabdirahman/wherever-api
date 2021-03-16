@@ -8,7 +8,7 @@ export default class AccountValidator {
     username: Joi.string().required(),
     email: Joi.string().email().required(),
     avatar: Joi.string().required(),
-    password: Joi.string().min(6).max(15).required(),
+    password: Joi.string().min(8).max(15).required(),
     role: Joi.string().valid(
       UserRolesEnum.BUYER,
       UserRolesEnum.SUPER_ADMIN,
@@ -19,7 +19,7 @@ export default class AccountValidator {
 
   static signInSchema: Joi.ObjectSchema = Joi.object({
     email: Joi.string().email().required(),
-    password: Joi.string().min(6).max(15).required()
+    password: Joi.string().min(8).max(15).required()
   });
 
   static signUp(model: SignUpModel): Joi.ValidationResult {
