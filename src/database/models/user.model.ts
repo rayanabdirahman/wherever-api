@@ -8,6 +8,7 @@ export interface UserDocument extends mongoose.Document {
   username: string;
   email: string;
   avatar: string;
+  likes: mongoose.Types.ObjectId[];
   password: string;
   role: UserRolesEnum[];
   address: string;
@@ -19,6 +20,7 @@ const UserSchema: mongoose.Schema = new mongoose.Schema(
     username: { type: String, required: true, trim: true, unique: true },
     email: { type: String, required: true, trim: true, unique: true },
     avatar: { type: String },
+    likes: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
     password: { type: String, required: true },
     role: {
       type: [

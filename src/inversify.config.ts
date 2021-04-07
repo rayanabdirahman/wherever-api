@@ -64,6 +64,12 @@ import {
   CloudinaryService,
   CloudinaryServiceImpl
 } from './services/cloudinary.service';
+import {
+  PostRepository,
+  PostRepositoryImpl
+} from './database/repositories/post.repository';
+import { PostService, PostServiceImpl } from './services/post.service';
+import PostController from './api/post/post.controller';
 
 const container = new Container();
 
@@ -79,6 +85,7 @@ container.bind<RegistrableController>(TYPES.Controller).to(StoreController);
 container.bind<RegistrableController>(TYPES.Controller).to(AccountController);
 container.bind<RegistrableController>(TYPES.Controller).to(UserController);
 container.bind<RegistrableController>(TYPES.Controller).to(AddressController);
+container.bind<RegistrableController>(TYPES.Controller).to(PostController);
 
 // services
 container.bind<CategoryService>(TYPES.CategoryService).to(CategoryServiceImpl);
@@ -94,6 +101,7 @@ container.bind<OrderService>(TYPES.OrderService).to(OrderServiceImpl);
 container
   .bind<OrderItemService>(TYPES.OrderItemService)
   .to(OrderItemServiceImpl);
+container.bind<PostService>(TYPES.PostService).to(PostServiceImpl);
 container
   .bind<CloudinaryService>(TYPES.CloudinaryService)
   .to(CloudinaryServiceImpl);
@@ -117,5 +125,6 @@ container.bind<OrderRepository>(TYPES.OrderRepository).to(OrderRepositoryImpl);
 container
   .bind<OrderItemRepository>(TYPES.OrderItemRepository)
   .to(OrderItemRepositoryImpl);
+container.bind<PostRepository>(TYPES.PostRepository).to(PostRepositoryImpl);
 
 export default container;

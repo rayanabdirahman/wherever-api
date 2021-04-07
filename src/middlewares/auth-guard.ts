@@ -39,6 +39,10 @@ const AuthGuard = (): any =>
       {
         url: /\/api\/v1\/categories(.*)/,
         methods: ['GET', 'OPTIONS']
+      },
+      {
+        url: /\/api\/v1\/posts(.*)/,
+        methods: ['GET', 'OPTIONS']
       }
     ]
   });
