@@ -1,5 +1,6 @@
 export interface PostModel {
   content: string;
+  replyTo?: string;
   postedBy: string;
   likes?: string[];
 }

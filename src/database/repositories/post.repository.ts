@@ -57,6 +57,14 @@ export class PostRepositoryImpl implements PostRepository {
     // return all posts or filter by postedBy
     return await Post.find(query)
       .populate('postedBy', ['-password'])
+      .populate({
+        path: 'replyTo',
+        populate: {
+          path: 'postedBy',
+          model: 'User',
+          select: { password: 0 }
+        }
+      })
       .sort({ createdAt: -1 });
   }
 }

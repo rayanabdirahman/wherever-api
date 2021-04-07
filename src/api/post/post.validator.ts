@@ -4,6 +4,7 @@ import { PostLikeModel, PostModel } from '../../domain/interfaces/post';
 export default class PostValidator {
   static createOneSchema: Joi.ObjectSchema = Joi.object({
     content: Joi.string().required(),
+    replyTo: Joi.string(),
     postedBy: Joi.string().required()
   });
 

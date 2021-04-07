@@ -26,6 +26,15 @@ export class PostServiceImpl implements PostService {
     this.userRepository = userRepository;
   }
 
+  private async doesPostExist(_id: string): Promise<boolean> {
+    const post = await this.postRepository.findById(_id);
+    if (!post) {
+      return Promise.resolve(false);
+    }
+
+    return Promise.resolve(true);
+  }
+
   private async hasUserLikedPost(model: PostLikeModel): Promise<boolean> {
     const user = await this.userRepository.findOneById(model.user);
     if (!user) {
@@ -40,6 +49,28 @@ export class PostServiceImpl implements PostService {
 
   async createOne(model: PostModel): Promise<PostDocument> {
     try {
+      // check if post is a reply
+      if (model.replyTo) {
+        // check if post being replied to exists
+        const isReplyToPostIdValid = await this.doesPostExist(model.replyTo);
+        if (!isReplyToPostIdValid) {
+          throw new Error('Post being replied to does not exist');
+        }
+
+        // create comment
+        const post = await this.postRepository.createOne(model);
+
+        // add post id into the comment array of the replied to post
+        await this.postRepository.findOneByIdAndUpdate(
+          model.replyTo,
+          'comments',
+          post._id as never,
+          '$addToSet'
+        );
+
+        return post;
+      }
+
       return await this.postRepository.createOne(model);
     } catch (error) {
       logger.error(
