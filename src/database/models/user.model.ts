@@ -22,15 +22,9 @@ const UserSchema: mongoose.Schema = new mongoose.Schema(
     avatar: { type: String },
     likes: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
     password: { type: String, required: true },
-    role: {
-      type: [
-        {
-          type: String,
-          enum: [UserRolesEnum]
-        }
-      ],
-      default: UserRolesEnum.BUYER
-    },
+    role: [
+      { type: String, enum: [UserRolesEnum], default: UserRolesEnum.BUYER }
+    ],
     address: { type: Schema.Types.ObjectId, ref: 'Address' }
   },
   { timestamps: true }

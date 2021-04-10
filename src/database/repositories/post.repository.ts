@@ -56,13 +56,13 @@ export class PostRepositoryImpl implements PostRepository {
   }): Promise<PostDocument[] | null> {
     // return all posts or filter by postedBy
     return await Post.find(query)
-      .populate('postedBy', ['-password'])
+      .populate('postedBy', ['-password -name -email'])
       .populate({
         path: 'replyTo',
         populate: {
           path: 'postedBy',
           model: 'User',
-          select: { password: 0 }
+          select: { username: 1, avatar: 1, role: 1 }
         }
       })
       .sort({ createdAt: -1 });
